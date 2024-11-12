@@ -6,7 +6,7 @@ using Myshop.Entities.Models;
 
 namespace Myshop.DataAccess.Data
 {
-    public class ApplicationDbContext:IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext:IdentityDbContext<ApplicationUsers>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext>options):base(options) 
         {
@@ -25,16 +25,14 @@ namespace Myshop.DataAccess.Data
                    p.Property(p => p.Image).HasColumnType("varchar").HasMaxLength(100);
 
                 });
-            //modelBuilder.Entity<ShopingCard>(s =>
-            //{
-            //    s.Property(s => s.Id).UseIdentityColumn(10, 10);
-            //});
-            //modelBuilder.Entity<ApplicationUsers>(c => { c.Property(c => c.Id).UseIdentityColumn(1, 1); });
+           
             base.OnModelCreating(modelBuilder);
         }
         public DbSet< Category>Categories { get;  set; }
         public DbSet<Products> Products { get; set; }
         public DbSet<ApplicationUsers> ApplicationUsers { get; set; }
         public DbSet<ShopingCard> ShopingCards { get; set; }
+        public DbSet<OrderHeader> OrderHeaders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
     }
 }

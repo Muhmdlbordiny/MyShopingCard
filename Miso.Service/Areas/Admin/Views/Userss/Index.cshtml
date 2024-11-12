@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ApplicationUsers>
+﻿@model IEnumerable<UserViewModel>
 @{
     ViewBag.PageTitle = "User Management";
     ViewBag.CardTitle = "View User";
@@ -11,14 +11,20 @@
 <table class="table table-hover" width="100%">
     <tr>
         <td>
-            Name
+            @Html.DisplayNameFor(x=>x.UserName)
         </td>
         <td>
-            Email
+            @Html.DisplayNameFor(x => x.Email)
+
+
+        </td>
+        <td>@Html.DisplayNameFor(x=>x.DisplayName)</td>
+        <td>
+            @Html.DisplayNameFor(x => x.PhoneNumber)
 
         </td>
         <td>
-            Phone Number
+            Roles
         </td>
         <td>
             Actions
@@ -27,11 +33,13 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.Name</td>
+            <td>@item.UserName</td>
             <td>@item.Email</td>
+            <td>@item.DisplayName</td>
             <td>@item.PhoneNumber</td>
+            <td>@string.Join(",", item.Roles.ToList())</td>
             <td>
-                @if(item.LockoutEnd==null | item.LockoutEnd<DateTime.Now)
+                @if(item.LockoutEnd == null | item.LockoutEnd<DateTime.Now)
                 {
                     <a class="btn btn-success" asp-action="LockUnLock" asp-route-id="@item.Id">
                         <i class="fas fa-lock-open"></i>
@@ -46,7 +54,7 @@
                 
             
             
-                <a class="btn btn-danger" href="/Admin/Category/Delete/@item.Id" class="btn btn-success">Delete</a>
+                <a class="btn btn-danger" href="/Admin/Userss/Edit/@item.Id" class="btn btn-success">Edit</a>
 
             </td>
 

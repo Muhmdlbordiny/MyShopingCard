@@ -9,5 +9,7 @@ namespace Myshop.Entities.Repositres
 {
     public interface IShopingCardRepositry:IGenericRepositry<ShopingCard>
     {
+        int increaseCount(ShopingCard shopingCard,int count);
+        int DecreaseCount(ShopingCard shopingCard,int count);
     }
 }
