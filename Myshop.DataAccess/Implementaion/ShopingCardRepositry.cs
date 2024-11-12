@@ -18,6 +18,16 @@ namespace Myshop.DataAccess.Implementaion
             _context = context;
         }
 
-       
+        public int DecreaseCount(ShopingCard shopingCard, int count)
+        {
+            shopingCard.Count -= count;
+            return shopingCard.Count;
+        }
+
+        public int increaseCount(ShopingCard shopingCard, int count)
+        {
+            shopingCard.Count += count;
+            return shopingCard.Count;
+        }
     }
 }

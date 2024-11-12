@@ -11,7 +11,6 @@ namespace Myshop.Entities.Models
 {
     public class ShopingCard
     {
-        [Key]
         public int ShopingCardId { get; set; }
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
@@ -25,5 +24,6 @@ namespace Myshop.Entities.Models
         [ValidateNever]
 
         public ApplicationUsers ApplicationUsers { get; set; }
+        
     }
 }
